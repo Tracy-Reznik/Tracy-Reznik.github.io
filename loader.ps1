@@ -566,6 +566,10 @@ function LookupFunc {
         Write-Host "Second Invoke - $moduleName $functionName";
         $handle = new-object -TypeName System.Runtime.InteropServices.HandleRef -ArgumentList @($null, $handle);
         $result = $tmp[0].Invoke($null, @($handle, $functionName));
+    }catch {
+        Write-Host "Second Invoke - $moduleName $functionName";
+        $handle = new-object -TypeName System.Runtime.InteropServices.HandleRef -ArgumentList @($null, $handle);
+        $result = $tmp.Invoke($null, @($handle, $functionName));
     }
     return $result;
 }
